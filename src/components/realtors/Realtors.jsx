@@ -3,7 +3,7 @@ import "./Realtors.scss"
 
 const Realtors = () => {
   return (
-    <div>Realtors</div>
+    <div className='realtors'>Realtors</div>
   )
 }
 

@@ -1,9 +1,9 @@
 import React from 'react'
-import "./Features.scss";
+import "./_Features.scss";
 
 const Features = () => {
   return (
-    <div>Features</div>
+    <div className='features'>Features</div>
   )
 }
 
