@@ -5,10 +5,10 @@ import "./Story.scss"
 
 const Story = () => {
   return (
-    <div className='story'>
+    <>
         <Pics />
         <Content />
-    </div>
+    </>
   )
 }
 
