@@ -10,11 +10,69 @@
 
 .home {
     background-color: $color-grey-light-1;
-}
+    position: relative;
+    width: 100%;
 
-.home_like,
-.home_liked {
-    fill: $color-primary;
-    width: 2rem;
-    height: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    &_img {
+        width: 100%;
+        grid-column: 1 / -1;
+    }
+
+    &_name {
+        grid-row: 2 / 3;
+        grid-column: 1 / -1;
+
+        width: 80%;
+        justify-self: center;
+        align-self: end;
+        z-index: 3;
+        font-family: $font-display;
+        font-size: 1.6rem;
+        text-align: center;
+        padding: 1.25rem;
+        background-color: $color-secondary;
+        color: #fff;
+        font-weight: 400;
+        user-select: none;
+        transform: translateY(-50%);
+    }
+
+    .like {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+    }
+
+    &_like,
+    &_liked {
+        fill: $color-primary;
+        width: 2rem;
+        height: 2rem;
+        -webkit-filter: drop-shadow(5px 5px 5px rgb(255, 255, 255));
+        filter: drop-shadow(0 0px 2px rgb(255, 0, 0));
+        cursor: pointer;
+        margin-right: 1rem;
+    }
+
+    &_location,
+    &_rooms {
+        margin-top: 2.5rem;
+    }
+    
+    &_location,
+    &_rooms,
+    &_area,
+    &_price {
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        margin-left: 2rem;
+    }
+
+    &_btn {
+        grid-column: 1 / -1;
+    }
 }

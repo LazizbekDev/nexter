@@ -9,7 +9,7 @@ const HomeItem = ({ img, room, area, price, location, name }) => {
     return (
         <div className="home">
             <img src={img} alt="house" className='home_img' />
-            <div onClick={() => {
+            <div className="like" onClick={() => {
                 liked ? setLiked(false) : setLiked(true)
                 console.log(liked)
             }}>
@@ -36,7 +36,7 @@ const HomeItem = ({ img, room, area, price, location, name }) => {
                 <p>{price} so'm</p>
             </div>
 
-            <button className='cta'>Contact realtor</button>
+            <button className='cta btn home_btn'>Contact realtor</button>
         </div>
     )
 }
