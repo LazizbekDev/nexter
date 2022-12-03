@@ -55,7 +55,12 @@ const Footer = () => {
 
             <p className={'copyright'}>
                 &copy; Copyright 2017 by Jonas Schmedtmann, Course Learnt By
-                <a href={'https://github.com/lazizbekdev'} rel="noreferrer" target={'_blank'}> LazizbekDev</a>
+                <a
+                    href={'https://github.com/lazizbekdev'}
+                    rel="noreferrer"
+                    onClick={() => playOnClick()}
+                    target={'_blank'}> LazizbekDev
+                </a>
             </p>
         </div>
     )
