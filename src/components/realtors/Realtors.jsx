@@ -30,9 +30,10 @@ const Realtors = () => {
             <h3 className={'heading-3'}>Top 3 realtors</h3>
 
             <div className={'realtors__list'}>
-                {data.map((realtor) => (
+                {data.map((realtor, index) => (
                     <RealtorsList
                         key={realtor.img}
+                        delay={`0.${index + 2}`}
                         img={realtor.img}
                         name={realtor.name}
                         sold={realtor.sold}
