@@ -10,8 +10,8 @@
     padding: 4rem 8rem 8rem 8rem;
 
     display: grid;
-    grid-template-rows: 1fr min-content 6rem;
-    grid-template-columns: max-content;
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    grid-template-columns: minmax(min-content, max-content);
     grid-row-gap: 1.5rem;
     justify-content: center;
 
@@ -48,8 +48,10 @@
         grid-template-columns: repeat(4, 1fr);
         grid-column-gap: 3rem;
         justify-content: center;
+        align-content: center;
         img {
-            height: 2.5rem;
+            max-height: 2.5rem;
+            max-width: 100%;
             filter: brightness(70%);
         }
     }

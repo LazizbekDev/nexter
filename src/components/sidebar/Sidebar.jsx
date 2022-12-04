@@ -3,11 +3,11 @@ import "./Sidebar.scss";
 import {VscMenu, VscChromeClose} from "react-icons/vsc"
 import clickSound from "../../sound/click.wav";
 
-const Sidebar = ({onClick, className}) => {
+const Sidebar = ({onClick, className, mb}) => {
 
     const playOnClick = () => new Audio(clickSound).play()
     return (
-        <div className='sidebar'>
+        <div className={`sidebar ${mb}`}>
             <button className={`nav-btn ${className}`} onClick={onClick}>
                 {className !== 'sidebar-btn' ? (
                     <VscMenu

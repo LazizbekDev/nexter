@@ -15,6 +15,7 @@ function App() {
     <div className={`container ${opened && 'sidebar-open'}`}>
       <Sidebar
           className={`${opened && 'sidebar-btn'}`}
+          mb={`${opened ? 'sidebar-open' : 'sidebar-close'}`}
           onClick={() => opened ? setOpened(false) : setOpened(true)} />
       <Header />
       <Realtors />
