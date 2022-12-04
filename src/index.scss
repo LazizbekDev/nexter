@@ -37,6 +37,9 @@ body {
 
 .heading-1 {
   @extend %heading;
+  font-size: 4.5rem;
+  color: $color-grey-light-1;
+  line-height: 1;
 }
 
 .heading-2 {
@@ -52,10 +55,8 @@ body {
 .heading-3 {
   @extend %heading;
   font-size: 1.6rem;
-  font-style: italic;
-
-  &--light {color: $color-grey-light-1;}
-  &--dark {color: $color-grey-dark-1;}
+  color: $color-primary;
+  text-transform: uppercase;
 }
 
 .heading-4 {
