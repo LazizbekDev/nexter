@@ -1,3 +1,4 @@
+import { useState } from "react"
 import Features from "./components/features/Features";
 import Footer from "./components/footer/Footer";
 import Gallery from "./components/gallery/Gallery";
@@ -8,9 +9,13 @@ import Sidebar from "./components/sidebar/Sidebar";
 import Story from "./components/story/Story";
 
 function App() {
+    const [opened, setOpened] = useState(false);
+
   return (
-    <div className="container">
-      <Sidebar />
+    <div className={`container ${opened && 'sidebar-open'}`}>
+      <Sidebar
+          className={`${opened && 'sidebar-btn'}`}
+          onClick={() => opened ? setOpened(false) : setOpened(true)} />
       <Header />
       <Realtors />
       <Features />
