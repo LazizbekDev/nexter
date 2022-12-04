@@ -16,7 +16,7 @@ const Header = () => {
             <h3 className={'heading-3 heading-3--dark'}>Your own home:</h3>
             <h1 className={'heading-1'}>The ultimate personal freedom</h1>
             <button className={'btn header__btn'} onClick={playOnClick}>View our properties</button>
-            <div className={'header__seenon-text'}>Seen on</div>
+            <div className={'header__seenon-text'}>As Seen on</div>
             <div className={'header__seenon-logos'}>
                 <img src={bbc} alt={'project main logo'}/>
                 <img src={forbes} alt={'project main logo'}/>
