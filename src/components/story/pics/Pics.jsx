@@ -1,7 +1,6 @@
 import React from 'react'
 import story from "../../../img/story-1.jpeg";
 import story2 from "../../../img/story-2.jpeg";
-import "./Pics.scss";
 
 const Pics = () => {
   return (

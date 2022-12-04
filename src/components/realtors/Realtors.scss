@@ -10,11 +10,23 @@
     justify-items: center;
     grid-row-gap: 2rem;
 
+    @media only screen and (max-width: $md) {
+        grid-column: 1 / -1;
+    }
+
     &__list {
         display: grid;
         grid-template-columns: min-content max-content;
         grid-column-gap: 2rem;
         grid-row-gap: 5vh;
+
+        @media only screen and (max-width: $md) {
+            grid-template-columns: repeat(3, min-content max-content);
+        }
+
+        @media only screen and (max-width: $sm) {
+            grid-template-columns: min-content max-content;
+        }
     }
 
     &__img {
