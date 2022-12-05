@@ -28,6 +28,16 @@ const Sidebar = ({onClick, className, mb}) => {
                     />
                 )}
             </motion.button>
+            <motion.ul
+                className={`navigation ${className === 'sidebar-btn' && 'navigation__open'}`}
+            >
+                <li>
+                    <a className={'heading-2'} href={'https://lazizbe.uz'}>Resume</a>
+                </li>
+                <li>
+                    <a className={'heading-2'} href={'https://github.com/lazizbekdev'}>Github</a>
+                </li>
+            </motion.ul>
         </div>
     )
 }
