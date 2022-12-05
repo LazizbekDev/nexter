@@ -8,9 +8,10 @@ const Home = () => {
     return (
         <div className='homes'>
 
-            {data.map(house => (
+            {data.map((house, index) => (
                 <HomeItem
                     key={house.img}
+                    delay={`0.${index + 1}`}
                     img={house.img}
                     name={house.name}
                     location={house.location}

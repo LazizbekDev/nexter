@@ -6,6 +6,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     grid-gap: 7rem;
+
+    @media only screen and (max-width: $md) {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
 }
 
 .home {
@@ -55,6 +60,9 @@
         filter: drop-shadow(0 0px 2px rgb(255, 0, 0));
         cursor: pointer;
         margin-right: 1rem;
+    }
+    &_liked {
+        filter: none;
     }
 
     &_location,

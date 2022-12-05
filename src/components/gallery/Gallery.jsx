@@ -14,54 +14,111 @@ import gal12 from '../../img/gal-12.jpeg';
 import gal13 from '../../img/gal-13.jpeg';
 import gal14 from '../../img/gal-14.jpeg';
 import "./gallery.scss";
+import {motion} from "framer-motion"
 
 const Gallery = () => {
-  return (
-    <div className='gallery'>
-        <figure className={'gallery__item gallery__item--1'}>
-            <img src={gal1} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--2'}>
-            <img src={gal2} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--3'}>
-            <img src={gal3} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--4'}>
-            <img src={gal4} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--5'}>
-            <img src={gal5} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--6'}>
-            <img src={gal6} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--7'}>
-            <img src={gal7} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--8'}>
-            <img src={gal8} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--9'}>
-            <img src={gal9} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--10'}>
-            <img src={gal10} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--11'}>
-            <img src={gal11} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--12'}>
-            <img src={gal12} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--13'}>
-            <img src={gal13} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-        <figure className={'gallery__item gallery__item--14'}>
-            <img src={gal14} alt={'gal.jpeg'} className={'gallery__img'} />
-        </figure>
-    </div>
-  )
+    return (
+        <div className='gallery'>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--1'}>
+                <img src={gal1} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--2'}>
+                <img src={gal2} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--3'}>
+                <img src={gal3} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--4'}>
+                <img src={gal4} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--5'}>
+                <img src={gal5} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--6'}>
+                <img src={gal6} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--7'}>
+                <img src={gal7} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--8'}>
+                <img src={gal8} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--9'}>
+                <img src={gal9} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--10'}>
+                <img src={gal10} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--11'}>
+                <img src={gal11} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--12'}>
+                <img src={gal12} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--13'}>
+                <img src={gal13} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+            <motion.figure
+                initial={{ opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{duration: 0.5}}
+                className={'gallery__item gallery__item--14'}>
+                <img src={gal14} alt={'gal.jpeg'} className={'gallery__img'}/>
+            </motion.figure>
+        </div>
+    )
 }
 
 export default Gallery

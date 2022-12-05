@@ -12,7 +12,8 @@ export const data = [
         location: "Uzbekistan",
         area: 325,
         room: 5,
-        price: "20, 000, 000"
+        price: "20, 000, 000",
+        liked: false
     },
     {
         img: house2,
@@ -20,7 +21,8 @@ export const data = [
         location: "Kazakistan",
         area: 127,
         room: 3,
-        price: "9, 945, 000"
+        price: "9, 945, 000",
+        liked: false
     },
     {
         img: house3,
@@ -28,7 +30,8 @@ export const data = [
         location: "Uzbekistan",
         area: 725,
         room: 8,
-        price: "45, 000, 000"
+        price: "45, 000, 000",
+        liked: false
     },
     {
         img: house4,
@@ -44,7 +47,8 @@ export const data = [
         location: "Turmenistan",
         area: 419,
         room: 5,
-        price: "23, 000, 000"
+        price: "23, 000, 000",
+        liked: false
     },
     {
         img: house6,
@@ -52,6 +56,7 @@ export const data = [
         location: "Uzbekistan",
         area: 349,
         room: 5,
-        price: "20, 700, 000"
+        price: "20, 700, 000",
+        liked: false
     }
 ]
