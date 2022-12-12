@@ -3,6 +3,7 @@ import "./Sidebar.scss";
 import {VscMenu, VscChromeClose} from "react-icons/vsc"
 import clickSound from "../../sound/click.wav";
 import { motion } from "framer-motion";
+import {Link} from "react-router-dom";
 
 const Sidebar = ({onClick, className, mb}) => {
 
@@ -36,6 +37,9 @@ const Sidebar = ({onClick, className, mb}) => {
                 </li>
                 <li>
                     <a className={'heading-2'} href={'https://github.com/lazizbekdev'}>Github</a>
+                </li>
+                <li>
+                    <Link to={'/login'} className={'heading-2'} href={'https://github.com/lazizbekdev'}>Login</Link>
                 </li>
             </motion.ul>
         </div>

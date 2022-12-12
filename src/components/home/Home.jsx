@@ -4,7 +4,7 @@ import {data} from './homeData';
 import "./_Home.scss";
 import HomeItem from './HomeItem';
 
-const Home = () => {
+const HomeComponent = () => {
     return (
         <div className='homes'>
 
@@ -24,4 +24,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default HomeComponent
