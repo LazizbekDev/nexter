@@ -1,5 +1,5 @@
 import React from 'react';
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.scss";
@@ -7,18 +7,23 @@ import {auth, db} from "../../firebase.config";
 
 export const Login = () => {
 
-    const submitHandler = (e) => {
+    const navigate = useNavigate();
+
+    const submitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const email = formData.get('email')
         const password = formData.get('password')
 
-        const data = {
-            email: email,
-            password: password
-        }
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-        console.table({data})
+            if (userCredential.user) {
+                navigate('/')
+            }
+        } catch (err) {
+            console.log(err)
+        }
     }
     return (
         <div className={'login-body'}>
