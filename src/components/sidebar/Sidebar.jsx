@@ -41,6 +41,13 @@ const Sidebar = ({onClick, className, mb}) => {
                 <li>
                     <Link to={'/login'} className={'heading-2'} href={'https://github.com/lazizbekdev'}>Login</Link>
                 </li>
+                <li>
+                    <Link
+                        to={'/profile'}
+                        className={'heading-2'}
+                        href={'https://github.com/lazizbekdev'}
+                    >Profile</Link>
+                </li>
             </motion.ul>
         </div>
     )
