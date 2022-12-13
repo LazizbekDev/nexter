@@ -1,8 +1,9 @@
 import React from 'react';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.scss";
-import {auth} from "../../firebase.config";
+import {auth, db} from "../../firebase.config";
 
 export const Login = () => {
 
@@ -69,6 +70,12 @@ export const SignUp = () => {
 
             await updateProfile(auth.currentUser, {
                 displayName: name
+            })
+
+            await setDoc(doc(db, 'users', user.uid), {
+                name,
+                email,
+                timestamp: serverTimestamp()
             })
 
             navigate('/');
