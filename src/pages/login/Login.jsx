@@ -53,7 +53,7 @@ export const Login = () => {
 
                 <div className="login-footer">
                     <Link to={'/signup'}>Sign up</Link>
-                    <a href={'/#'}>Forgot Password?</a>
+                    <Link to={'/forgotten'}>Forgot Password?</Link>
                 </div>
             </form>
         </div>
