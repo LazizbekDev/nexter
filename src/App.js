@@ -1,18 +1,23 @@
 import Home from "./pages/home/home";
 import {Routes, Route} from "react-router-dom";
-// eslint-disable-next-line no-unused-vars
+import { ProSidebarProvider } from "react-pro-sidebar";
 import {Login, SignUp} from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer} from "react-toastify";
 
 function App() {
 
     return (
-        <Routes>
-            <Route path={'/'} element={<Home/>}/>
-            <Route path={'/login'} element={<Login/>}/>
-            <Route path={'/signup'} element={<SignUp/>}/>
-            <Route path={'/profile'} element={<Profile />} />
-        </Routes>
+        <ProSidebarProvider>
+            <Routes>
+                <Route path={'/'} element={<Home/>}/>
+                <Route path={'/login'} element={<Login/>}/>
+                <Route path={'/signup'} element={<SignUp/>}/>
+                <Route path={'/profile'} element={<Profile />} />
+            </Routes>
+            <ToastContainer />
+        </ProSidebarProvider>
     );
 }
 
