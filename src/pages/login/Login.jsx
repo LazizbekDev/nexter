@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import { createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
-import { Link, useNavigate } from "react-router-dom";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, getAuth} from "firebase/auth";
+import {doc, serverTimestamp, setDoc} from "firebase/firestore";
+import {Link, useNavigate} from "react-router-dom";
 import "./login.scss";
 import {auth, db} from "../../firebase.config";
 import {toast} from "react-toastify";
@@ -11,9 +11,10 @@ export const Login = () => {
 
     const navigate = useNavigate();
 
+    const {currentUser} = getAuth();
     useEffect(() => {
-        auth.currentUser && navigate('/profile')
-    }, [auth.currentUser])
+        currentUser && navigate('/profile')
+    }, [currentUser, navigate])
     const submitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -67,10 +68,11 @@ export const Login = () => {
 
 export const SignUp = () => {
     const navigate = useNavigate();
+    const {currentUser} = getAuth();
 
     useEffect(() => {
-        auth.currentUser && navigate('/profile')
-    }, [auth.currentUser])
+        currentUser && navigate('/profile')
+    }, [currentUser, navigate])
     const submitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -83,7 +85,7 @@ export const SignUp = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            await updateProfile(auth.currentUser, {
+            await updateProfile(currentUser, {
                 displayName: name
             })
 
