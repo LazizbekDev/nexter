@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {getAuth, updateProfile} from "firebase/auth";
 import {doc, updateDoc} from "firebase/firestore";
 import { db } from "../../firebase.config";
@@ -9,11 +9,7 @@ import {toast} from "react-toastify";
 const Profile = () => {
     const auth = getAuth();
     const navigate = useNavigate();
-    const [changeDetails, setChangeDetailes] = useState(false)
-
-    useEffect(() => {
-        !auth.currentUser && navigate('/login')
-    }, [auth.currentUser, navigate])
+    const [changeDetails, setChangeDetails] = useState(false)
 
     // eslint-disable-next-line no-unused-vars
     const [formData, setFormData] = useState({
@@ -38,9 +34,7 @@ const Profile = () => {
 
                 const userRef = await doc(db, 'users', auth.currentUser.uid);
 
-                await updateDoc(userRef, {
-                    name
-                })
+                await updateDoc(userRef, {name})
             }
         } catch (err) {
             toast.error('Couldn\'t update profile details')
@@ -71,7 +65,7 @@ const Profile = () => {
                     <h2 className={'heading-2'}>Personal details</h2>
                     <button className={'btn'} onClick={() => {
                         changeDetails && onSubmit();
-                        setChangeDetailes((prevState) => !prevState);
+                        setChangeDetails((prevState) => !prevState);
                     }}>
                         {changeDetails ? 'done' : 'change'}
                     </button>

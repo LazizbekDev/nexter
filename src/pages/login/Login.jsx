@@ -1,4 +1,3 @@
-import React, {useEffect} from 'react';
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, getAuth} from "firebase/auth";
 import {doc, serverTimestamp, setDoc} from "firebase/firestore";
 import {Link, useNavigate} from "react-router-dom";
@@ -10,11 +9,6 @@ import logo from "../../img/logo.png"
 export const Login = () => {
 
     const navigate = useNavigate();
-
-    const {currentUser} = getAuth();
-    useEffect(() => {
-        currentUser && navigate('/profile')
-    }, [currentUser, navigate])
     const submitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -69,10 +63,6 @@ export const Login = () => {
 export const SignUp = () => {
     const navigate = useNavigate();
     const {currentUser} = getAuth();
-
-    useEffect(() => {
-        currentUser && navigate('/profile')
-    }, [currentUser, navigate])
     const submitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);

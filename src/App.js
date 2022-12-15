@@ -5,6 +5,7 @@ import {Login, SignUp} from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
 
@@ -14,7 +15,9 @@ function App() {
                 <Route path={'/'} element={<Home/>}/>
                 <Route path={'/login'} element={<Login/>}/>
                 <Route path={'/signup'} element={<SignUp/>}/>
-                <Route path={'/profile'} element={<Profile />} />
+                <Route path={'/profile'} element={<PrivateRoute />}>
+                    <Route path={'/profile'} element={<Profile />} />
+                </Route>
             </Routes>
             <ToastContainer />
         </ProSidebarProvider>
