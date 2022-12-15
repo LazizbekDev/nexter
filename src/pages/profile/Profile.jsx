@@ -73,6 +73,13 @@ const Profile = () => {
 
                 <div className={'profileCard'}>
                     <form>
+                        {auth?.currentUser?.photoURL && (
+                            <img
+                                src={auth?.currentUser?.photoURL}
+                                alt={auth?.currentUser?.photoURL}
+                                style={{borderRadius: "50%", display: changeDetails ? 'none' : 'block'}}
+                            />
+                        )}
                         <input
                             type={'text'}
                             id={'name'}
