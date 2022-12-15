@@ -49,8 +49,20 @@ body {
   display: grid;
   grid-template-rows: 100vh max-content;
   grid-template-columns: [sidebar-start] 8rem [sidebar-end profile-start] 1fr [profile-end];
-  //grid-row-gap: 4rem;
   transition: all .2s;
+
+  @media only screen and (max-width: $lg) {
+    grid-template-rows: 6rem max-content;
+    grid-template-columns: 1fr;
+
+    grid-row-gap: 2rem;
+  }
+}
+
+.bg-primary {
+  background: $color-secondary;
+  display: flex;
+  align-items: center;
 }
 
 .sidebar-open {
@@ -113,6 +125,32 @@ body {
 
   &:hover {
     background-color: $color-primary-dark;
+  }
+
+  &--go {
+    border-radius: 9px;
+    padding: 1rem;
+    font-size: 2rem;
+    background: transparent;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--input {
+    outline: none;
+    width: 80%;
+    border-radius: 0;
+    border: 1px solid $color-primary;
+    padding: 1rem;
+    height: 100%;
+  }
+
+  &--link {
+    background: transparent;
+    color: $color-secondary;
+    font-weight: 600;
   }
 }
 
