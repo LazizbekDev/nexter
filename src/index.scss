@@ -154,6 +154,47 @@ body {
   }
 }
 
+.google {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  div {
+    text-align: center;
+    font-size: 1.6rem;
+    transform: translateY(-1rem);
+
+    button {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      font-size: 2rem;
+      border: none;
+      transition: .2s;
+
+      &:hover {
+        background: #e8e7e7;
+      }
+    }
+  }
+
+  &::after, &::before {
+    position: absolute;
+    content: "";
+    width: 45%;
+    height: 1px;
+    background: black;
+  }
+  &::after {
+    left: 0;
+  }
+  &::before {
+    right: 0;
+  }
+}
+
 .mb-sm {margin-bottom: 2rem;}
 .mb-md {margin-bottom: 3rem;}
 .mb-lg {margin-bottom: 4rem;}

@@ -5,6 +5,7 @@ import "./login.scss";
 import {auth, db} from "../../firebase.config";
 import {toast} from "react-toastify";
 import logo from "../../img/logo.png"
+import OAuth from "../../components/OAuth";
 
 export const Login = () => {
 
@@ -50,6 +51,10 @@ export const Login = () => {
                     className="login"
                     type={'submit'}>Login
                 </button>
+
+                <div className={'google'}>
+                    <OAuth />
+                </div>
 
                 <div className="login-footer">
                     <Link to={'/signup'}>Sign up</Link>
@@ -124,8 +129,12 @@ export const SignUp = () => {
                     type={'submit'}>Login
                 </button>
 
+                <div className={'google'}>
+                    <OAuth />
+                </div>
+
                 <div className="login-footer">
-                    <Link to={'/login'}>Log in</Link>
+                    <Link to={'/login'}>Sign Up</Link>
                     <a href={'/#'}>Need help?</a>
                 </div>
             </form>
