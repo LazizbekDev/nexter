@@ -13,11 +13,7 @@ const Sidebar = ({onClick, className, mb}) => {
 
     return (
         <div className={`sidebar ${mb}`}>
-            <motion.button
-                initial={{x: "-100%", opacity: 0}}
-                animate={{x: "0%", opacity: 1}}
-                transition={{duration: 0.5, delay: 0.3}}
-                className={`nav-btn ${className}`} onClick={onClick}>
+            <div className={`nav-btn ${className}`} onClick={onClick}>
                 {className !== 'sidebar-btn' ? (
                     <VscMenu
                         size={'4rem'}
@@ -31,7 +27,7 @@ const Sidebar = ({onClick, className, mb}) => {
                         style={{cursor: "pointer"}}
                     />
                 )}
-            </motion.button>
+            </div>
             <motion.ul
                 className={`navigation ${className === 'sidebar-btn' && 'navigation__open'}`}
             >
@@ -40,6 +36,12 @@ const Sidebar = ({onClick, className, mb}) => {
                 </li>
                 <li>
                     <a className={'heading-2'} href={'https://github.com/lazizbekdev'}>Github</a>
+                </li>
+                <li>
+                    <Link
+                        to={'/category'}
+                        className={'heading-2'}>Category
+                    </Link>
                 </li>
                 {!auth.currentUser ? (
                     <li>

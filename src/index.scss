@@ -65,6 +65,10 @@ body {
   align-items: center;
 }
 
+.hover-primary:hover {
+  opacity: .8;
+}
+
 .sidebar-open {
   grid-template-columns: [sidebar-start] 30rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
 
@@ -841,7 +845,6 @@ body {
   padding: 0.9rem 3rem;
   background-color: #ffffff;
   font-weight: 600;
-  border-radius: 1rem;
   font-size: 1rem;
   margin: 0.5rem 0.5rem 0 0;
   display: flex;
@@ -868,7 +871,6 @@ body {
 }
 .formInputSmall,
 .formInputFile {
-  margin-right: 3rem;
   padding: 0.9rem 0.7rem;
   text-align: center;
 }

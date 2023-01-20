@@ -1,13 +1,9 @@
 import { Link } from "react-router-dom";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { toast } from "react-toastify";
-import { AiOutlineRight } from "react-icons/ai"
-import Sidebar from "./sidebar/Sidebar";
-import {useState} from "react";
+import "../pages/login/login.scss"
 
 const ForgetPassword = () => {
-    const [opened, setOpened] = useState(false);
-
     const onSubmit = async (e) => {
         e.preventDefault();
         const auth = getAuth();
@@ -22,31 +18,35 @@ const ForgetPassword = () => {
     }
 
     return (
-        <div className={`container-page ${opened && 'sidebar-open'}`}>
-            <Sidebar
-                className={`${opened && 'sidebar-btn'}`}
-                mb={`${opened ? 'sidebar-open' : 'sidebar-close'}`}
-                onClick={() => opened ? setOpened(false) : setOpened(true)}
-            />
+        <div className={'login-body'}>
 
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className={'screen-1'}>
                 <div style={{display: "flex", justifyContent: "space-between", padding: "1rem 3rem", alignItems: "center"}}>
-                    <input
-                        type={'email'}
-                        className={'btn--input'}
-                        placeholder={'Email'}
-                        name={'email'}
-                    />
-
-                    <Link to={'/login'} className={'btn btn--link'}>Go to LogIn</Link>
+                    <div className={'input-group'}>
+                        <input
+                            type={'email'}
+                            // className={'btn--input'}
+                            placeholder={'Email'}
+                            name={'email'}
+                        />
+                    </div>
                 </div>
 
-                <div style={{display: "flex", justifyContent: "space-between", padding: "1rem 3rem"}} className={'bg-primary'}>
+                <button type={'submit'}
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            padding: "1rem 3rem",
+                            border: "none",
+                            outline: "none",
+                            transition: ".2s"
+                        }}
+                        className={'bg-primary hover-primary'}>
                     <span className={'heading-3'}>Send reset link</span>
-                    <button className={'btn btn--go'}>
-                        Send <AiOutlineRight />
-                    </button>
-                </div>
+                </button>
+
+                <Link to={'/login'} className={'btn btn--link formInputSmall'}>Go to LogIn</Link>
+
             </form>
         </div>
     );

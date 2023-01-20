@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import "./Header.scss";
 import logo from '../../img/logo.png'
 import bbc from '../../img/logo-bbc.png'

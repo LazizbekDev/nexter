@@ -58,7 +58,7 @@ export const Login = () => {
 
                 <div className="login-footer">
                     <Link to={'/signup'}>Sign up</Link>
-                    <Link to={'/forgotten'}>Forgot Password?</Link>
+                    <Link to={'/reset-password'}>Forgot Password?</Link>
                 </div>
             </form>
         </div>
