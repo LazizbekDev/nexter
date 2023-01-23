@@ -43,6 +43,12 @@ const Sidebar = ({onClick, className, mb}) => {
                         className={'heading-2'}>Category
                     </Link>
                 </li>
+                <li>
+                    <Link
+                        to={'/offers'}
+                        className={'heading-2'}>Offers
+                    </Link>
+                </li>
                 {!auth.currentUser ? (
                     <li>
                         <Link to={'/login'} className={'heading-2'} href={'https://github.com/lazizbekdev'}>Login</Link>

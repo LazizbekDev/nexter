@@ -9,6 +9,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import ForgetPassword from "./components/ForgetPassword";
 import Explore from "./pages/explore";
 import Category from "./pages/listings/Category";
+import Offer from "./pages/Offer";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
                 <Route path={'/signup'} element={<SignUp/>}/>
                 <Route path={'/category'} element={<Explore />}/>
                 <Route path={'/category/:name'} element={<Category />}/>
+                <Route path={'/offers'} element={<Offer />}/>
                 <Route path={'/profile'} element={<PrivateRoute />}>
                     <Route path={'/profile'} element={<Profile />} />
                 </Route>
