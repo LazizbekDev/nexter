@@ -70,7 +70,7 @@ body {
 }
 
 .sidebar-open {
-  grid-template-columns: [sidebar-start] 30rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+  grid-template-columns: [sidebar-start] 30rem [sidebar-end profile-start] 1fr [profile-end];
 
   @media only screen and (max-width: $lg) {
     grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
@@ -512,35 +512,43 @@ body {
 
 .categoryListings {
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80rem, 1fr));
+  grid-gap: 1rem;
+  justify-items: center ;
 }
 
 .categoryListing {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
   position: relative;
+  background: $color-secondary;
+  width: max-content;
+  padding: 0 2rem;
+  margin: 0 2rem;
 }
 
 .categoryListingLink {
   display: contents;
 }
 
-.categoryListingImg {
-  width: 30%;
-  height: 100px;
+.categoryListingImgBlock {
+  width: 35rem;
+  height: 20rem;
   border-radius: 1.5rem;
-  object-fit: cover;
-}
-@media (min-width: 1024px) {
-  .categoryListingImg {
-    width: 19%;
-    height: 217px;
+  padding: 2rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 }
 
 .categoryListingDetails {
   width: 65%;
+  color: $color-primary;
 }
 @media (min-width: 1024px) {
   .categoryListingDetails {
@@ -550,21 +558,21 @@ body {
 
 .categoryListingLocation {
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 1.7rem;
   opacity: 0.8;
   margin-bottom: 0;
 }
 
 .categoryListingName {
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 2.25rem;
   margin: 0;
 }
 
 .categoryListingPrice {
   margin-top: 0.5rem;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 2.1rem;
   color: #00cc66;
   margin-bottom: 0;
   display: flex;
@@ -579,21 +587,20 @@ body {
 
 .categoryListingInfoText {
   font-weight: 500;
-  font-size: 0.7rem;
+  font-size: 1.7rem;
 }
 
 .loadMore {
   cursor: pointer;
   width: 8rem;
-  margin: 0 auto;
   text-align: center;
-  padding: 0.25rem 0.5rem;
+  padding: 1.25rem 1.5rem;
   background-color: #000000;
   color: #ffffff;
   font-weight: 600;
   border-radius: 1rem;
   opacity: 0.7;
-  margin-top: 2rem;
+  margin: 2rem auto 0;
 }
 
 .listingDetails {
@@ -617,7 +624,7 @@ body {
 
 .listingName {
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
 
