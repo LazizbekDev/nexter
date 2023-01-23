@@ -2,8 +2,9 @@ import {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import { collection, getDocs, query, where, orderBy, limit } from "firebase/firestore";
 import { toast } from "react-toastify";
-import{ db } from "../firebase.config";
-import Sidebar from "../components/sidebar/Sidebar";
+import{ db } from "../../firebase.config";
+import Sidebar from "../../components/sidebar/Sidebar";
+import ListingItem from "./ListingItem";
 
 const Category = () => {
     const [listings, setListings] = useState(null);
@@ -68,9 +69,14 @@ const Category = () => {
                     {loading ? <h2 className={'heading-2'}>Loading...</h2> : listings &&
                     listings.length > 0 ? (
                         <main>
-                            <ul>
+                            <ul className={'categoryListings'}>
                                 {listings.map((listing) => (
-                                    <h2 key={listing.id} className={'heading-2'}>{listing.data.name}</h2>
+                                    <ListingItem
+                                        listing={listing.data}
+                                        id={listing.id}
+                                        key={listing.id}
+                                        onDelete={() => console.log('deleted')}
+                                    />
                                 ))}
                             </ul>
                         </main>

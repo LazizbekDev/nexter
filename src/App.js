@@ -8,7 +8,7 @@ import {ToastContainer} from "react-toastify";
 import PrivateRoute from "./components/PrivateRoute";
 import ForgetPassword from "./components/ForgetPassword";
 import Explore from "./pages/explore";
-import Category from "./pages/Category";
+import Category from "./pages/listings/Category";
 
 function App() {
 
