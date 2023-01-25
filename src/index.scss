@@ -253,6 +253,44 @@ body {
   font-weight: 800;
 }
 
+.listingForm {
+  font-size: 2.3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  @media only screen and (max-width: $md) {
+    .formGroup, .createListingButton {
+      grid-column: 1 / span 3;
+      border: 1px solid $color-secondary;
+      background: $color-primary;
+      padding: 1rem;
+      margin: 2rem;
+
+      & > * {
+        width: 100%;
+      }
+    }
+  }
+
+  .formGroup > input, textarea {
+    border: 1px solid $color-secondary;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}
+
+.formRooms {
+  div {
+    margin: 0 1rem 0 0;
+  }
+
+  input {
+    border: 1px solid $color-secondary;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}
+
 .navbar {
   position: fixed;
   left: 0;
@@ -836,6 +874,7 @@ body {
   font-weight: 600;
   margin-top: 1rem;
   display: block;
+  color: $color-secondary;
 }
 
 .formButtons {
@@ -851,15 +890,18 @@ body {
 .formButtonActive {
   padding: 0.9rem 3rem;
   background-color: #ffffff;
-  font-weight: 600;
-  font-size: 1rem;
   margin: 0.5rem 0.5rem 0 0;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  border: 1px solid $color-secondary;
+  font-size: 2rem;
+  font-weight: 700;
 }
 .formButtonActive {
-  background-color: #00cc66;
+  background-color: $color-secondary;
   color: #ffffff;
 }
 
@@ -897,10 +939,15 @@ body {
 .formPriceDiv {
   display: flex;
   align-items: center;
+
+  input {
+    border: 1px solid $color-secondary;
+    font-size: 2.3rem;
+    font-weight: 700;
+  }
 }
 
 .formPriceText {
-  margin-left: -1.5rem;
   font-weight: 600;
 }
 
@@ -913,17 +960,16 @@ body {
   width: 100%;
 }
 .formInputFile::-webkit-file-upload-button {
-  background-color: #00cc66;
+  background-color: $color-secondary;
   border: none;
   color: #ffffff;
   font-weight: 600;
-  padding: 0.5rem 0.75rem;
-  border-radius: 1rem;
   margin-right: 1rem;
 }
 
 .createListingButton {
   margin-top: 5rem;
+  grid-column: 1 / span 3;
 }
 
 .offers {

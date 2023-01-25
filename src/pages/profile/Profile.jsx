@@ -3,8 +3,9 @@ import {getAuth, updateProfile} from "firebase/auth";
 import {doc, updateDoc} from "firebase/firestore";
 import { db } from "../../firebase.config";
 import Sidebar from "../../components/sidebar/Sidebar";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
+import { BsChevronDoubleRight } from "react-icons/bs"
 
 const Profile = () => {
     const auth = getAuth();
@@ -73,13 +74,6 @@ const Profile = () => {
 
                 <div className={'profileCard'}>
                     <form>
-                        {auth?.currentUser?.photoURL && (
-                            <img
-                                src={auth?.currentUser?.photoURL}
-                                alt={auth?.currentUser?.photoURL}
-                                style={{borderRadius: "50%", display: changeDetails ? 'none' : 'block'}}
-                            />
-                        )}
                         <input
                             type={'text'}
                             id={'name'}
@@ -100,6 +94,22 @@ const Profile = () => {
                         />
                     </form>
                 </div>
+                <Link
+                    to={'/create-listing'}
+                    className={'btn'}
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-end",
+                        backgroundColor: "#101d2c",
+                        width: "max-content",
+                        position: "absolute",
+                        bottom: 0,
+                        right: 0
+                    }}
+                >
+                    Sell or rent your home <BsChevronDoubleRight size={'2rem'} />
+                </Link>
             </div>
         </div>
     )
