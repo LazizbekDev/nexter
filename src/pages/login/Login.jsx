@@ -2,7 +2,7 @@ import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfil
 import {doc, serverTimestamp, setDoc} from "firebase/firestore";
 import {Link, useNavigate} from "react-router-dom";
 import "./login.scss";
-import {auth, db} from "../../firebase.config";
+import {db} from "../../firebase.config";
 import {toast} from "react-toastify";
 import logo from "../../img/logo.png"
 import OAuth from "../../components/OAuth";
@@ -10,6 +10,7 @@ import OAuth from "../../components/OAuth";
 export const Login = () => {
 
     const navigate = useNavigate();
+    const auth = getAuth()
     const submitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -67,7 +68,7 @@ export const Login = () => {
 
 export const SignUp = () => {
     const navigate = useNavigate();
-    const {currentUser} = getAuth();
+    const auth = getAuth();
     const submitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -80,7 +81,7 @@ export const SignUp = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            await updateProfile(currentUser, {
+            await updateProfile(auth.currentUser, {
                 displayName: name
             })
 
@@ -93,6 +94,7 @@ export const SignUp = () => {
             navigate('/');
         } catch (err) {
             toast.error('Something went wrong with registration')
+            console.log(err)
         }
 
     }
@@ -126,7 +128,7 @@ export const SignUp = () => {
 
                 <button
                     className="login"
-                    type={'submit'}>Login
+                    type={'submit'}>Sign Up
                 </button>
 
                 <div className={'google'}>
