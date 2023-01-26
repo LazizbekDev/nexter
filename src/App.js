@@ -29,7 +29,7 @@ function App() {
                 </Route>
                 <Route path={'/reset-password'} element={<ForgetPassword />} />
                 <Route path={'/create-listing'} element={<CreateListing />} />
-                <Route path={'/listing'} element={<Listing />} />
+                <Route path={'/category/:name/:id'} element={<Listing />} />
             </Routes>
             <ToastContainer />
         </ProSidebarProvider>
