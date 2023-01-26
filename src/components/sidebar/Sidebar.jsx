@@ -35,9 +35,6 @@ const Sidebar = ({onClick, className, mb}) => {
                     <a className={'heading-2'} href={'https://lazizbe.uz'}>Resume</a>
                 </li>
                 <li>
-                    <a className={'heading-2'} href={'https://github.com/lazizbekdev'}>Github</a>
-                </li>
-                <li>
                     <Link
                         to={'/category'}
                         className={'heading-2'}>Category

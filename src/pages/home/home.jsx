@@ -12,7 +12,7 @@ const Home = () => {
     const [opened, setOpened] = useState(false);
 
     return (
-        <div className={`container ${opened && 'sidebar-open'}`}>
+        <div className={`container ${opened && 'home-sidebar-open'}`}>
             <Sidebar
                 className={`${opened && 'sidebar-btn'}`}
                 mb={`${opened ? 'sidebar-open' : 'sidebar-close'}`}
