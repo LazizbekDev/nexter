@@ -8,8 +8,9 @@ import {
     uploadBytesResumable,
     getDownloadURL
 } from "firebase/storage";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore"
 import { v4 as uuidv4 } from "uuid"
-// import { db } from "../firebase.config";
+import { db } from "../firebase.config";
 
 const CreateListing = () => {
 
@@ -17,15 +18,15 @@ const CreateListing = () => {
     const navigate = useNavigate();
     const isMounted = useRef(true);
     // eslint-disable-next-line no-unused-vars
-    const [geoEnabled, setGeoEnabled] = useState(true);
+    const [geoEnabled] = useState(true);
     const [loading, setLoading] = useState(false)
 
 
     const [formData, setFormData] = useState({
         type: "rent",
         name: "",
-        bedrooms: '1',
-        bathrooms: '1',
+        bedrooms: 1,
+        bathrooms: 1,
         parking: false,
         furnished: false,
         address: '',
@@ -115,8 +116,6 @@ const CreateListing = () => {
         } else {
             geoLocation.lat = latitude
             geoLocation.lng = longitude;
-            // eslint-disable-next-line no-unused-vars
-            location = address
         }
 
         const storeImage = async (image) => {
@@ -185,9 +184,23 @@ const CreateListing = () => {
             console.log(err)
         })
 
-        console.log(imgUrls)
+        const dataCopy = {
+            ...formData,
+            imgUrls,
+            geoLocation,
+            timestemp: serverTimestamp()
+        }
+
+        dataCopy.location = address
+        delete dataCopy.images
+        delete dataCopy.address
+        !dataCopy.offer && delete dataCopy.discountedPrice;
+
+        const docRef = await addDoc(collection(db, 'listings'), dataCopy)
 
         setLoading(false)
+        toast.success('Listing saved')
+        navigate(`/category/${dataCopy.type}/${docRef.id}`)
     }
 
     const onMutate = (e) => {
