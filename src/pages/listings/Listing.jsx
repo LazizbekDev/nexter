@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react';
-import {Link, useNavigate, useParams} from "react-router-dom";
-import { getAuth } from "firebase/auth";
+import { useNavigate, useParams} from "react-router-dom";
+// import { getAuth } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore"
 import {db} from "../../firebase.config";
 import Sidebar from "../../components/sidebar/Sidebar";
-import {BsChevronDoubleRight} from "react-icons/bs";
+import {IoMdShareAlt} from "react-icons/io";
+import {toast} from "react-toastify";
 
 const Listing = () => {
     const [loading, setLoading] = useState(true);
     const [listing, setListing] = useState(null);
-    const [shareLinkCopied, setShareLinkCopied] = useState(null);
+    // const [shareLinkCopied, setShareLinkCopied] = useState(null);
     const [opened, setOpened] = useState(false);
 
     const navigate = useNavigate();
     const params = useParams();
-    const auth = getAuth();
+    // const auth = getAuth();
 
     useEffect(() => {
         const fetchListing = async () => {
@@ -31,6 +32,22 @@ const Listing = () => {
         fetchListing();
     }, [navigate, params.id])
 
+    const shareToFriends = async () => {
+        const shareData = {
+            title: listing.name,
+            text: `House for ${listing.type} in ${listing.location}. \n ${listing.bedrooms} bed rooms and ${listing.bathrooms} bath rooms`,
+            url: window.location.href
+        }
+
+        try {
+            await navigator.share(shareData);
+            toast.success('Thanks for sharing');
+        } catch (err) {
+            // navigator.clipboard.write(window.location.href);
+            console.log(err)
+        }
+    }
+
     return (
         <div className={`container-page ${opened && 'sidebar-open'}`}>
             <Sidebar
@@ -39,13 +56,16 @@ const Listing = () => {
                 onClick={() => opened ? setOpened(false) : setOpened(true)}
             />
 
-            <div>
+            <main>
                 <div style={{display: 'flex', alignItems: "baseline", justifyContent: "space-between"}}>
                     {loading ? <h2 className={'heading-2'}>Loading...</h2> : (<>
                         <h2 className={'heading-2'}>{listing.name}</h2>
                     </>)}
+                    <div className={'shareIconDiv'} onClick={shareToFriends}>
+                        <IoMdShareAlt size={'2rem'} />
+                    </div>
                 </div>
-            </div>
+            </main>
         </div>
     );
 };
