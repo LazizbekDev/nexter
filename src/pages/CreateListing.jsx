@@ -92,7 +92,7 @@ const CreateListing = () => {
         let location
 
         if (geoEnabled) {
-            const response = await fetch(`http://api.positionstack.com/v1/forward?access_key=7374f80e4d500fb31eca9162be370964&query=${address}`);
+            const response = await fetch(`http://api.positionstack.com/v1/forward?access_key=${process.env.REACT_APP_GEOCODE_API}&query=${address}`);
             const data = await response.json();
             
 
@@ -181,9 +181,8 @@ const CreateListing = () => {
             [...images].map((image) => storeImage(image))
         ).catch((err) => {
             setLoading(false)
-            toast.error('Images not uploaded')
+            toast.error(err)
             console.log(err)
-
         })
 
         console.log(imgUrls)
