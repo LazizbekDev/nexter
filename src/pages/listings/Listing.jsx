@@ -39,12 +39,20 @@ const Listing = () => {
             url: window.location.href
         }
 
-        try {
-            await navigator.share(shareData);
-            toast.success('Thanks for sharing');
-        } catch (err) {
-            // navigator.clipboard.write(window.location.href);
-            console.log(err)
+        if (navigator.share) {
+            try {
+                await navigator.share(shareData);
+                toast.success('Thanks for sharing');
+            } catch (err) {
+                console.log(err)
+            }
+        } else {
+            try {
+                await navigator.clipboard.writeText(window.location.href);
+                toast.success('Link copied to clipboard')
+            } catch (err) {
+                toast.error('Something went to wrong ')
+            }
         }
     }
 
