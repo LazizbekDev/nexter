@@ -69,9 +69,9 @@ const Listing = () => {
                     {loading ? <h2 className={'heading-2'}>Loading...</h2> : (<>
                         <h2 className={'heading-2'}>{listing.name}</h2>
                     </>)}
-                    <div className={'shareIconDiv'} onClick={shareToFriends}>
-                        <IoMdShareAlt size={'2rem'} />
-                    </div>
+                    <button className={'shareIconDiv'} onClick={shareToFriends}>
+                        <IoMdShareAlt size={'4rem'} />
+                    </button>
                 </div>
             </main>
         </div>

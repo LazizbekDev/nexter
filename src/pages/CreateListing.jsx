@@ -105,7 +105,9 @@ const CreateListing = () => {
 
             geoLocation.lat = data.data[0]?.latitude ?? 0
             geoLocation.lng = data.data[0]?.longitude ?? 0
-            location = data.data[0].label
+            location = data.data[0].street ? `${data.data[0].label}, ${data.data[0].street}` : data.data[0].label
+
+            console.log(data)
 
             if (location === undefined || location.includes('undefined')) {
                 setLoading(false);
@@ -191,13 +193,14 @@ const CreateListing = () => {
             timestemp: serverTimestamp()
         }
 
-        dataCopy.location = address
+        dataCopy.location = location
         delete dataCopy.images
         delete dataCopy.address
         !dataCopy.offer && delete dataCopy.discountedPrice;
 
         const docRef = await addDoc(collection(db, 'listings'), dataCopy)
 
+        console.log(location)
         setLoading(false)
         toast.success('Listing saved')
         navigate(`/category/${dataCopy.type}/${docRef.id}`)

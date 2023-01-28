@@ -656,16 +656,26 @@ body {
 .shareIconDiv {
   cursor: pointer;
   position: fixed;
-  //top: 3%;
   right: 5%;
   z-index: 2;
-  background-color: #ffffff;
+  background-color: $color-primary;
+  color: white;
   border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
+  border: none;
+  box-shadow: 0 0.2rem 0.7rem rgba(0, 0, 0, 0.62);
+  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: .3s;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &:active, &:link {
+    box-shadow: inset 0 0.2rem 0.7rem rgba(0, 0, 0, 0.62);
+  }
 }
 
 .listingName {
