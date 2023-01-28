@@ -662,62 +662,72 @@ body {
   color: white;
   border-radius: 50%;
   border: none;
-  box-shadow: 0 0.2rem 0.7rem rgba(0, 0, 0, 0.62);
+  box-shadow:
+          0 0.2rem 0.7rem rgba($color-secondary, 0.62),
+          0 -0.4rem 0.7rem white;
   padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: .3s;
+  transition: .3s box-shadow;
 
   &:hover {
     box-shadow: none;
   }
 
   &:active, &:link {
-    box-shadow: inset 0 0.2rem 0.7rem rgba(0, 0, 0, 0.62);
+    transition: .3s box-shadow;
+
+    box-shadow:
+            inset 0 0.2rem 0.7rem rgba($color-secondary, 0.62),
+            inset 0 -0.4rem 0.7rem rgba(245, 245, 245, 0.85);
   }
 }
 
 .listingName {
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   margin-bottom: 0.5rem;
 }
 
 .listingLocation {
   margin-top: 0;
+  font-size: 2.5rem;
   font-weight: 600;
 }
 
 .discountPrice {
-  padding: 0.25rem 0.5rem;
-  background-color: #000000;
-  color: #ffffff;
-  border-radius: 1rem;
-  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  background-color: $color-secondary;
+  color: $color-primary;
+  font-size: 2rem;
   font-weight: 600;
   display: inline;
 }
 
 .listingType {
-  padding: 0.25rem 0.5rem;
-  background-color: #00cc66;
+  padding: 0.2rem 0.5rem;
+  background-color: $color-primary;
   color: #ffffff;
-  border-radius: 2rem;
+  font-size: 2rem;
   display: inline;
   font-weight: 600;
-  font-size: 0.8rem;
   margin-right: 1rem;
 }
 
 .listingDetailsList {
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
   list-style-type: none;
 }
 .listingDetailsList li {
-  margin: 0.3rem 0;
+  padding: 0.3rem;
+  margin-top: 0.4rem;
   font-weight: 500;
-  opacity: 0.8;
+  text-align: center;
+  background: $color-secondary;
 }
 
 .listingLocationTitle {

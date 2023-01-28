@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams} from "react-router-dom";
-// import { getAuth } from "firebase/auth";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import { getAuth } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore"
 import {db} from "../../firebase.config";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -15,7 +15,7 @@ const Listing = () => {
 
     const navigate = useNavigate();
     const params = useParams();
-    // const auth = getAuth();
+    const userRef = getAuth();
 
     useEffect(() => {
         const fetchListing = async () => {
@@ -64,14 +64,45 @@ const Listing = () => {
                 onClick={() => opened ? setOpened(false) : setOpened(true)}
             />
 
-            <main>
-                <div style={{display: 'flex', alignItems: "baseline", justifyContent: "space-between"}}>
+            <main style={{padding: "0 7rem"}}>
+                <div>
                     {loading ? <h2 className={'heading-2'}>Loading...</h2> : (<>
-                        <h2 className={'heading-2'}>{listing.name}</h2>
+                        <div className={'listingDetails'}>
+                            <p className={'listingName heading-3'}>
+                                {listing.name} - {listing.offer ?
+                                listing.discountedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') :
+                                listing.regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                            } So'm
+                            </p>
+                            <p className={'listingLocation heading-2'}>{listing.location}</p>
+                            <p className={'listingType'}>For {listing.type}</p>
+                            {listing.offer && <p className={'discountPrice'}>
+                                {(listing.regularPrice - listing.discountedPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} Discount
+                            </p> }
+                            <ul className={'listingDetailsList heading-3'}>
+                                <li>
+                                    {listing.bedrooms > 1 ? `${listing.bedrooms} ta yotoq xona`
+                                        : '1 ta yotoq xono'}
+                                </li>
+                                <li>
+                                    {listing.bathrooms > 1 ? `${listing.bathrooms} ta yuvunish xonasi`
+                                        : '1 ta yuvunish xonasi'}
+                                </li>
+                                <li>{listing.parking && "Parking spot"}</li>
+                                <li>{listing.furnished && "Furnished"}</li>
+                            </ul>
+                            <p className={'listingLocationTitle'}>Location</p>
+
+                            {userRef.currentUser?.uid !== listing.userRef && (
+                                <Link to={`/contact/${listing.userRef}?listingName=${listing.name}&listingLocation=${listing.location}`} className={'btn'}>
+                                    Contact landloard
+                                </Link>
+                            )}
+                            <button className={'shareIconDiv'} onClick={shareToFriends}>
+                                <IoMdShareAlt size={'4rem'} />
+                            </button>
+                        </div>
                     </>)}
-                    <button className={'shareIconDiv'} onClick={shareToFriends}>
-                        <IoMdShareAlt size={'4rem'} />
-                    </button>
                 </div>
             </main>
         </div>
