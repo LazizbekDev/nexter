@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import {Link, useNavigate, useParams} from "react-router-dom";
+import {MapContainer, TileLayer, Popup, Marker, Circle} from "react-leaflet";
 import { getAuth } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore"
 import {db} from "../../firebase.config";
@@ -92,6 +93,30 @@ const Listing = () => {
                                 <li>{listing.furnished && "Furnished"}</li>
                             </ul>
                             <p className={'listingLocationTitle'}>Location</p>
+
+                            <div className={'leaflet-container'}>
+                                <MapContainer
+                                    style={{height: '30rem', width: '100%'}}
+                                    zoom={13}
+                                    scrollWheelZoom={true}
+                                    center={[listing.geoLocation.lat, listing.geoLocation.lng]}>
+                                    <TileLayer
+                                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                    />
+
+                                    <Marker position={[listing.geoLocation.lat, listing.geoLocation.lng]}>
+                                        <Popup>
+                                            {listing.location}
+                                        </Popup>
+                                        <Circle
+                                            center={[listing.geoLocation.lat, listing.geoLocation.lng]}
+                                            pathOptions={{color: 'purple'}}
+                                            radius={500}
+                                        />
+                                    </Marker>
+                                </MapContainer>
+                            </div>
 
                             {userRef.currentUser?.uid !== listing.userRef && (
                                 <Link to={`/contact/${listing.userRef}?listingName=${listing.name}`}
