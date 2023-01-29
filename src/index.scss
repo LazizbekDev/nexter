@@ -47,7 +47,7 @@ body {
 
 .container-page {
   display: grid;
-  grid-template-rows: 100vh max-content;
+  grid-template-rows: minmax(100vh, max-content) max-content;
   grid-template-columns: [sidebar-start] 8rem [sidebar-end profile-start] 1fr [profile-end];
   transition: all .2s;
 
@@ -486,9 +486,16 @@ body {
 }
 
 .swiperSlideDiv {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
   position: relative;
   width: 100%;
   height: 100%;
+}
+
+.swiper-slide, .swiper-slide-active {
+  height: 40rem;
+  width: 100% !important;
 }
 
 .swiperSlideImg {
@@ -657,7 +664,7 @@ body {
   cursor: pointer;
   position: fixed;
   right: 0;
-  z-index: 2;
+  z-index: 444;
   background-color: $color-secondary;
   color: white;
   border: none;

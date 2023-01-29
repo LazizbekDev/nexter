@@ -7,6 +7,15 @@ import {db} from "../../firebase.config";
 import Sidebar from "../../components/sidebar/Sidebar";
 import {IoMdShareAlt} from "react-icons/io";
 import {toast} from "react-toastify";
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const Listing = () => {
     const [loading, setLoading] = useState(true);
@@ -60,12 +69,32 @@ const Listing = () => {
     return (
         <div className={`container-page ${opened && 'sidebar-open'}`}>
             <Sidebar
+                modules={[Navigation, Pagination, Scrollbar, A11y]}
                 className={`${opened && 'sidebar-btn'}`}
                 mb={`${opened ? 'sidebar-open' : 'sidebar-close'}`}
                 onClick={() => opened ? setOpened(false) : setOpened(true)}
             />
 
             <main style={{padding: "0 7rem"}}>
+                <Swiper
+                    slidesPerView={1}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={{clickable: true}}>
+                    <button className={'shareIconDiv'} onClick={shareToFriends}>
+                        <IoMdShareAlt size={'4rem'} />
+                    </button>
+                    {listing?.imgUrls?.map((url, index) => (
+                        <SwiperSlide key={index}>
+                            <div style={{
+                                background: `url(${listing.imgUrls[index]}) center no-repeat`,
+                                backgroundSize: "cover"
+                            }} className={'swiperSlideDiv'} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
                 <div>
                     {loading ? <h2 className={'heading-2'}>Loading...</h2> : (<>
                         <div className={'listingDetails'}>
@@ -124,9 +153,6 @@ const Listing = () => {
                                     Contact landlord
                                 </Link>
                             )}
-                            <button className={'shareIconDiv'} onClick={shareToFriends}>
-                                <IoMdShareAlt size={'4rem'} />
-                            </button>
                         </div>
                     </>)}
                 </div>
