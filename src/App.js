@@ -12,6 +12,7 @@ import Category from "./pages/listings/Category";
 import Offer from "./pages/Offer";
 import CreateListing from "./pages/CreateListing";
 import Listing from "./pages/listings/Listing";
+import Contact from "./pages/Contact";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
                 <Route path={'/reset-password'} element={<ForgetPassword />} />
                 <Route path={'/create-listing'} element={<CreateListing />} />
                 <Route path={'/category/:name/:id'} element={<Listing />} />
+                <Route path={'/contact/:id'} element={<Contact />} />
             </Routes>
             <ToastContainer />
         </ProSidebarProvider>

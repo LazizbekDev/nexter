@@ -94,8 +94,9 @@ const Listing = () => {
                             <p className={'listingLocationTitle'}>Location</p>
 
                             {userRef.currentUser?.uid !== listing.userRef && (
-                                <Link to={`/contact/${listing.userRef}?listingName=${listing.name}&listingLocation=${listing.location}`} className={'btn'}>
-                                    Contact landloard
+                                <Link to={`/contact/${listing.userRef}?listingName=${listing.name}`}
+                                      className={'btn'}>
+                                    Contact landlord
                                 </Link>
                             )}
                             <button className={'shareIconDiv'} onClick={shareToFriends}>
