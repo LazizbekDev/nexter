@@ -4,6 +4,7 @@ import rent from "../img/house-1.jpeg"
 import sale from "../img/house-2.jpeg"
 import {Link} from "react-router-dom";
 import "../components/header/Header.scss"
+import Slider from "../components/Slider";
 const Explore = () => {
 
     const [opened, setOpened] = useState(false);
@@ -24,6 +25,10 @@ const Explore = () => {
             />
 
             <div>
+
+                <Slider />
+
+
                 <div style={{
                     display: 'flex',
                     alignItems: "baseline",
