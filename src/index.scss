@@ -510,30 +510,30 @@ body {
   left: 0;
   font-weight: 600;
   max-width: 90%;
-  font-size: 1.25rem;
-  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 3.5rem;
+  background-color: rgba($color-secondary, 0.8);
   padding: 0.5rem;
 }
 @media (min-width: 1024px) {
   .swiperSlideText {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
   }
 }
 
 .swiperSlidePrice {
   color: #000000;
   position: absolute;
+  font-size: 2.6rem;
   top: 143px;
-  left: 11px;
   font-weight: 600;
   max-width: 90%;
-  background-color: #ffffff;
-  padding: 0.25rem 0.5rem;
-  border-radius: 1rem;
+  background-color: $color-primary;
+  padding: 0.2rem 0.5rem;
+  text-transform: uppercase;
 }
 @media (min-width: 1024px) {
   .swiperSlidePrice {
-    font-size: 1.25rem;
+    font-size: 2rem;
   }
 }
 

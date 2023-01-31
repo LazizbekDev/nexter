@@ -21,7 +21,7 @@ const Slider = () => {
     useEffect(() => {
         const fetchListings = async () => {
             const listingsRef = collection(db, 'listings');
-            const q = query(listingsRef, orderBy('timestamp', 'desc'), limit(5))
+            const q = query(listingsRef, orderBy('timestemp', 'desc'), limit(5))
 
             const querySnap = await getDocs(q);
 
@@ -45,7 +45,7 @@ const Slider = () => {
     if (loading) {
         return "Loading..."
     }
-    return listings && listings.length !== 0 && (
+    return listings && (
         <>
             <p className={'exploreHeading heading-3'}>Recommended</p>
 
@@ -65,8 +65,8 @@ const Slider = () => {
                         }} className={'swiperSlideDiv'} />
                         <p className={'swiperSlideText'}>{data.name}</p>
                         <p className={'swiperSlidePrice'}>
-                            {data.discountedPrice ?? data.regularPrice}
-                            {data.type === 'rent' && ' /month'}
+                            ${data.discountedPrice ?? data.regularPrice}
+                            {data.type === 'rent' && ' / month'}
                         </p>
                     </SwiperSlide>
                 ))}
