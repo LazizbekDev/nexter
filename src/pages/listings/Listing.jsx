@@ -69,7 +69,6 @@ const Listing = () => {
     return (
         <div className={`container-page ${opened && 'sidebar-open'}`}>
             <Sidebar
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
                 className={`${opened && 'sidebar-btn'}`}
                 mb={`${opened ? 'sidebar-open' : 'sidebar-close'}`}
                 onClick={() => opened ? setOpened(false) : setOpened(true)}
@@ -77,6 +76,7 @@ const Listing = () => {
 
             <main style={{padding: "0 7rem"}}>
                 <Swiper
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
                     slidesPerView={1}
                     autoplay={{
                         delay: 2500,
