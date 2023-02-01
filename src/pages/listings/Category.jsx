@@ -1,6 +1,16 @@
 import {useEffect, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
-import { collection, getDocs, query, where, orderBy, limit, startAfter } from "firebase/firestore";
+import {
+    collection,
+    getDocs,
+    doc,
+    query,
+    where,
+    orderBy,
+    limit,
+    startAfter,
+    deleteDoc
+} from "firebase/firestore";
 import { toast } from "react-toastify";
 import{ db } from "../../firebase.config";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -51,6 +61,17 @@ const Category = () => {
         fetchListings();
     }, [params.name])
 
+    const onDelete = async (id) => {
+        if (window.confirm('Are u sure to delete')) {
+            await deleteDoc(doc(db, 'listings', id))
+
+            const updatedListings = listings.filter(listing => {
+                return listing.id !== id
+            });
+
+            setListings(updatedListings)
+        }
+    }
     const loadMore = async () => {
         try {
             const listingsRef = collection(db, 'listings');
@@ -118,7 +139,7 @@ const Category = () => {
                                             listing={listing.data}
                                             id={listing.id}
                                             key={listing.id}
-                                            onDelete={() => console.log('deleted')}
+                                            onDelete={() => onDelete(listing.id)}
                                             onEdit={() => onEdit(listing.id)}
                                         />
                                     ))}
