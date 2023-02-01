@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { BiBath } from "react-icons/bi";
+import {BiBath, BiMessageSquareEdit} from "react-icons/bi";
 import { IoBed, IoTrashBin } from "react-icons/io5";
 // import { IoTrashBin } from "react-icons/io"
-const ListingItem = ({listing, id, onDelete}) => {
+const ListingItem = ({listing, id, onDelete, onEdit}) => {
     return (
         <li className={'categoryListing'}>
             <Link to={`/category/${listing.type}/${id}`} className={'categoryListingLink'}>
@@ -40,9 +40,15 @@ const ListingItem = ({listing, id, onDelete}) => {
                 </div>
             </Link>
             {onDelete && <IoTrashBin
-                style={{color: "rgb(231, 76, 60)", fontSize: "4rem"}}
+                style={{color: "rgb(231, 76, 60)", fontSize: "4rem", cursor: "pointer"}}
                 className={'removeIcon'}
                 onClick={() => onDelete()}
+            />}
+
+            {onEdit && <BiMessageSquareEdit
+                style={{color: "rgb(60,231,140)", fontSize: "4rem", cursor: "pointer"}}
+                className={'removeIcon'}
+                onClick={() => onEdit()}
             />}
         </li>
     );
