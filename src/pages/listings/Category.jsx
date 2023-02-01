@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import { collection, getDocs, query, where, orderBy, limit, startAfter } from "firebase/firestore";
 import { toast } from "react-toastify";
 import{ db } from "../../firebase.config";
@@ -11,7 +11,7 @@ const Category = () => {
     const [loading, setLoading] = useState(true);
     const [lastFetched, setLastFetched] = useState(null)
     const [opened, setOpened] = useState(false);
-
+    const navigate = useNavigate();
 
     const params = useParams();
 
@@ -84,6 +84,10 @@ const Category = () => {
         }
     }
 
+    const onEdit = (id) => {
+        navigate(`/edit-listing/${id}`)
+    }
+
     return (
         <div className={`container-page ${opened && 'sidebar-open'}`}>
             <Sidebar
@@ -115,6 +119,7 @@ const Category = () => {
                                             id={listing.id}
                                             key={listing.id}
                                             onDelete={() => console.log('deleted')}
+                                            onEdit={() => onEdit(listing.id)}
                                         />
                                     ))}
                                 </ul>
