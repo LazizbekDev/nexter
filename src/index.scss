@@ -583,7 +583,7 @@ body {
 
   @media only screen and (max-width: 650px) {
     flex-direction: column;
-    background: $color-grey-dark-2;
+    background: $color-primary;
     position: relative;
 
     .categoryListingImgBlock {
@@ -597,6 +597,15 @@ body {
     .categoryListingDetails {
       width: 100%;
       color: $color-secondary;
+      margin: 2rem auto;
+    }
+
+    .categoryListingPrice, .categoryListingInfoText {
+      color: $color-grey-dark-1;
+    }
+
+    .categoryListingInfoDiv svg {
+      color: $color-grey-dark-1;
     }
 
     .removeIcon {
@@ -611,6 +620,12 @@ body {
 
     &:last-child {
       margin-bottom: 2rem;
+    }
+  }
+
+  @media only screen and (max-width: 360px) {
+    .categoryListingImgBlock {
+      width: 28rem;
     }
   }
 }
@@ -669,6 +684,7 @@ body {
   display: flex;
   justify-content: space-between;
   max-width: 275px;
+  align-items: center;
 }
 
 .categoryListingInfoText {

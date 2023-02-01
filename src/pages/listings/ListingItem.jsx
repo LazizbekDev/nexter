@@ -18,23 +18,23 @@ const ListingItem = ({listing, id, onDelete}) => {
                     <p className={'categoryListingLocation'}>{listing.location}</p>
                     <p className={'categoryListingName'}>{listing.name}</p>
                     <p className={'categoryListingPrice'}>
-                        {listing.type === "rent" && 'oyiga/'}
-                        {listing.offer ?
+                        {listing.type === "rent" && 'month/'}
+                        ${listing.offer ?
                             listing.discountedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') :
                             listing.regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                        } So'm
+                        }
                     </p>
                     <div className={'categoryListingInfoDiv'}>
                         <IoBed size={"2rem"} />
                         <p className={'categoryListingInfoText'}>
-                            {listing.bedrooms > 1 ? `${listing.bedrooms} ta yotoq xona`
-                            : '1 ta yotoq xono'}
+                            {listing.bedrooms > 1 ? `${listing.bedrooms} bed rooms`
+                            : '1 bed room'}
                         </p>
 
                         <BiBath size={"2rem"} />
                         <p className={'categoryListingInfoText'}>
-                            {listing.bathrooms > 1 ? `${listing.bathrooms} ta yuvunish xonasi`
-                                : '1 ta yuvunish xonasi'}
+                            {listing.bathrooms > 1 ? `${listing.bathrooms} bath rooms`
+                                : '1 bath room'}
                         </p>
                     </div>
                 </div>
