@@ -1,8 +1,20 @@
 import { Link } from "react-router-dom";
 import {BiBath, BiMessageSquareEdit} from "react-icons/bi";
 import { IoBed, IoTrashBin } from "react-icons/io5";
+import {useEffect, useState} from "react";
+import {auth} from "../../firebase.config";
 // import { IoTrashBin } from "react-icons/io"
 const ListingItem = ({listing, id, onDelete, onEdit}) => {
+    const [owner, setOwner] = useState(false);
+
+    useEffect(() => {
+        if (listing && listing.userRef !== auth.currentUser.uid) {
+            setOwner(false)
+        } else {
+            setOwner(true)
+        }
+    }, [listing])
+
     return (
         <li className={'categoryListing'}>
             <Link to={`/category/${listing.type}/${id}`} className={'categoryListingLink'}>
@@ -39,13 +51,13 @@ const ListingItem = ({listing, id, onDelete, onEdit}) => {
                     </div>
                 </div>
             </Link>
-            {onDelete && <IoTrashBin
+            {onDelete && owner && <IoTrashBin
                 style={{color: "rgb(231, 76, 60)", fontSize: "4rem", cursor: "pointer"}}
                 className={'removeIcon'}
                 onClick={() => onDelete()}
             />}
 
-            {onEdit && <BiMessageSquareEdit
+            {onEdit && owner && <BiMessageSquareEdit
                 style={{color: "rgb(60,231,140)", fontSize: "4rem", cursor: "pointer"}}
                 className={'removeIcon'}
                 onClick={() => onEdit()}
