@@ -1,12 +1,27 @@
 import { useState } from "react"
 import { AiOutlineHeart, AiFillHeart, AiOutlineUser } from "react-icons/ai"
-import { BiMap } from "react-icons/bi"
+import { TfiGift } from "react-icons/tfi"
 import { motion } from "framer-motion"
 import clickSound from "../../sound/click.wav";
+import {useNavigate} from "react-router-dom";
+import {BiMap} from "react-icons/bi";
 
-const HomeItem = ({ img, room, area, price, location, name, delay }) => {
+const HomeItem = (
+    {
+        img,
+        room,
+        price,
+        location,
+        name,
+        delay,
+        type,
+        id,
+        parking,
+        furnished
+    }) => {
 
     const [liked, setLiked] = useState(false)
+    const navigate = useNavigate();
 
     const clickToLike = () => {
         liked ? setLiked(false) : setLiked(true)
@@ -19,7 +34,9 @@ const HomeItem = ({ img, room, area, price, location, name, delay }) => {
             whileInView={{opacity: 1}}
             transition={{duration: 0.4, delay: delay}}
             className="home">
-            <img src={img} alt="house" className='home_img' />
+            <div className={'home_img_block'}>
+                <img src={img} alt="house" className='home_img' />
+            </div>
             <div className="like" onClick={clickToLike}>
                 {liked ? <AiFillHeart className="home_liked" size={'2rem'} /> : <AiOutlineHeart className='home_like' size={'2rem'} />}
             </div>
@@ -30,7 +47,7 @@ const HomeItem = ({ img, room, area, price, location, name, delay }) => {
                 className='home_name'>{name}</motion.h5>
             <div className='home_location'>
                 <BiMap />
-                <p>{location}</p>
+                <p>{location.substring(0, 12).concat('...')}</p>
             </div>
 
             <div className='home_rooms'>
@@ -39,21 +56,20 @@ const HomeItem = ({ img, room, area, price, location, name, delay }) => {
             </div>
 
             <div className='home_area'>
-                <BiMap />
-                <p>{area} m<sup>2</sup></p>
+                {!parking && !furnished ? '' : <TfiGift />}
+                {parking ? "Parking" : furnished && "Furnished"}
             </div>
 
             <div className='home_price'>
-                <BiMap />
-                <p>{price} so'm</p>
+                <p>${price} {type === 'rent' && ' / month'}</p>
             </div>
 
-            <motion.button
-                initial={{opacity: 0}}
-                whileInView={{opacity: 1}}
-                transition={{duration: 0.4}}
-                onClick={() => new Audio(clickSound).play()}
-                className='cta btn home_btn'>Contact realtor</motion.button>
+            <button
+                onClick={() => {
+                    new Audio(clickSound).play()
+                    navigate(`/category/${type}/${id}`)
+                }}
+                className='cta btn home_btn'>View More</button>
         </motion.div>
     )
 }

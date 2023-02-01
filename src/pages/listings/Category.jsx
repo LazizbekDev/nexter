@@ -34,7 +34,7 @@ const Category = () => {
                     listingsRef,
                     where("type", "==", params.name),
                     orderBy('timestemp', 'desc'),
-                    limit(10)
+                    limit(5)
                 )
 
                 const querySnap = await getDocs(q);
@@ -81,7 +81,7 @@ const Category = () => {
                 where("type", "==", params.name),
                 orderBy('timestemp', 'desc'),
                 startAfter(lastFetched),
-                limit(10)
+                limit(5)
             )
 
             const querySnap = await getDocs(q);

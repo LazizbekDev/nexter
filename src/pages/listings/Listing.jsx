@@ -99,10 +99,10 @@ const Listing = () => {
                     {loading ? <h2 className={'heading-2'}>Loading...</h2> : (<>
                         <div className={'listingDetails'}>
                             <p className={'listingName heading-3'}>
-                                {listing.name} - {listing.offer ?
+                                {listing.name} - ${listing.offer ?
                                 listing.discountedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') :
                                 listing.regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                            } So'm
+                            }
                             </p>
                             <p className={'listingLocation heading-2'}>{listing.location}</p>
                             <p className={'listingType'}>For {listing.type}</p>
@@ -118,8 +118,8 @@ const Listing = () => {
                                     {listing.bathrooms > 1 ? `${listing.bathrooms} ta yuvunish xonasi`
                                         : '1 ta yuvunish xonasi'}
                                 </li>
-                                <li>{listing.parking && "Parking spot"}</li>
-                                <li>{listing.furnished && "Furnished"}</li>
+                                {listing.parking &&<li>Parking spot</li>}
+                                {listing.parking &&<li>Furnished</li>}
                             </ul>
                             <p className={'listingLocationTitle'}>Location</p>
 
