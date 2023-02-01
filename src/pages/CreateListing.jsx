@@ -93,28 +93,26 @@ const CreateListing = () => {
         let location
 
         if (geoEnabled) {
-            const response = await fetch(`http://api.positionstack.com/v1/forward?access_key=${process.env.REACT_APP_GEOCODE_API}&query=${address}`);
+            const response = await fetch(`https://forward-reverse-geocoding.p.rapidapi.com/v1/search?q=${address}&accept-language=en&polygon_threshold=0.0`, {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '06fdc64e18mshc6e2868dc26e1c6p1b76e6jsnd8718f1785de',
+                    'X-RapidAPI-Host': 'forward-reverse-geocoding.p.rapidapi.com'
+                }
+            });
             const data = await response.json();
-            
 
-    /*        if (data?.data?.length === 0) {
-                setLoading(false);
-                toast.error('Please enter correct address')
-                return
-            }*/
-
-            geoLocation.lat = data?.data[0]?.latitude
-            geoLocation.lng = data?.data[0]?.longitude
-            location = data?.data[0]?.label
-
-            console.log(data)
-
-            if (location === undefined || location.includes('undefined')) {
+            if (data[0] === undefined) {
                 setLoading(false);
                 toast.error('Please enter correct address')
                 return
             }
 
+            geoLocation.lat = data[0]?.lat ?? 0
+            geoLocation.lng = data[0]?.lon ?? 0
+            location = data[0].display_name
+
+            console.log(location, geoLocation)
         } else {
             geoLocation.lat = latitude
             geoLocation.lng = longitude;
