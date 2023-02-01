@@ -103,8 +103,8 @@ const CreateListing = () => {
                 return
             }*/
 
-            geoLocation.lat = data?.data[0]?.latitude ?? 0
-            geoLocation.lng = data?.data[0]?.longitude ?? 0
+            geoLocation.lat = data?.data[0]?.latitude
+            geoLocation.lng = data?.data[0]?.longitude
             location = data?.data[0]?.label
 
             console.log(data)
