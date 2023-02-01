@@ -103,9 +103,9 @@ const CreateListing = () => {
                 return
             }*/
 
-            geoLocation.lat = data.data[0]?.latitude ?? 0
-            geoLocation.lng = data.data[0]?.longitude ?? 0
-            location = data.data[0].street ? `${data.data[0].label}, ${data.data[0].street}` : data.data[0].label
+            geoLocation.lat = data?.data[0]?.latitude ?? 0
+            geoLocation.lng = data?.data[0]?.longitude ?? 0
+            location = data?.data[0]?.label
 
             console.log(data)
 
