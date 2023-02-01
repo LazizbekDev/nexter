@@ -97,11 +97,11 @@ const CreateListing = () => {
             const data = await response.json();
             
 
-            if (data?.data?.length === 0) {
+    /*        if (data?.data?.length === 0) {
                 setLoading(false);
                 toast.error('Please enter correct address')
                 return
-            }
+            }*/
 
             geoLocation.lat = data.data[0]?.latitude ?? 0
             geoLocation.lng = data.data[0]?.longitude ?? 0
