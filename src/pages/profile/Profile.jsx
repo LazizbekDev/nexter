@@ -172,7 +172,7 @@ const Profile = () => {
                         justifyContent: "flex-end",
                         backgroundColor: "#101d2c",
                         width: "max-content",
-                        position: "absolute",
+                        position: "fixed",
                         bottom: 0,
                         right: 0
                     }}

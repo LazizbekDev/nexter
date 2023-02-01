@@ -577,14 +577,15 @@ body {
   align-items: center;
   position: relative;
   background: $color-secondary;
-  width: max-content;
-  padding: 0 2rem;
+  width: 75%;
+  padding: 1rem 1rem;
   margin: 0 2rem;
 
   @media only screen and (max-width: 650px) {
     flex-direction: column;
     background: $color-primary;
     position: relative;
+    width: min-content;
 
     .categoryListingImgBlock {
       padding: 1rem 0 0 0;
@@ -637,13 +638,12 @@ body {
 .categoryListingImgBlock {
   width: 35rem;
   height: 20rem;
-  border-radius: 1.5rem;
   padding: 2rem;
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -660,6 +660,7 @@ body {
 .categoryListingLocation {
   font-weight: 600;
   font-size: 1.7rem;
+  word-break: break-word;
   opacity: 0.8;
   margin-bottom: 0;
 }
