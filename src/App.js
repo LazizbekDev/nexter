@@ -13,6 +13,7 @@ import Offer from "./pages/Offer";
 import CreateListing from "./pages/CreateListing";
 import Listing from "./pages/listings/Listing";
 import Contact from "./pages/Contact";
+import Edit from "./components/Edit";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
                 <Route path={'/reset-password'} element={<ForgetPassword />} />
                 <Route path={'/create-listing'} element={<CreateListing />} />
                 <Route path={'/category/:name/:id'} element={<Listing />} />
+                <Route path={'/edit-listing/:id'} element={<Edit />} />
                 <Route path={'/contact/:id'} element={<Contact />} />
             </Routes>
             <ToastContainer />
