@@ -89,6 +89,10 @@ const Profile = () => {
             setListings(updatedListings)
         }
     }
+
+    const onEdit = (id) => {
+        navigate(`/edit-listing/${id}`)
+    }
     return (
         <div className={`container-page ${opened && 'sidebar-open'}`}>
             <Sidebar
@@ -152,6 +156,7 @@ const Profile = () => {
                                     listing={listing.data}
                                     id={listing.id}
                                     onDelete={() => onDelete(listing.id)}
+                                    onEdit={() => onEdit(listing.id)}
                                 />
                             ))}
                         </ul>
