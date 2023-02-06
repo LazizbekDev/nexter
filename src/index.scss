@@ -1087,3 +1087,16 @@ body {
     }
   }
 }
+
+.center {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  width: 100vw;
+  inset: 0;
+  height: 100%;
+
+  &-asset {
+    position: absolute;
+  }
+}
