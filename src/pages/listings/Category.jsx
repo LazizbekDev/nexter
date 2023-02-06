@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import{ db } from "../../firebase.config";
 import Sidebar from "../../components/sidebar/Sidebar";
 import ListingItem from "./ListingItem";
+import loader from "../../img/loader.gif";
 
 const Category = () => {
     const [listings, setListings] = useState(null);
@@ -129,7 +130,15 @@ const Category = () => {
                 </div>
 
                 <div>
-                    {loading ? <h2 className={'heading-2'}>Loading...</h2> : listings &&
+                    {loading ? <div className={'center'}>
+                        <div className={'center-asset'}>
+                            <img
+                                src={loader}
+                                alt={'loader'}
+                                width={120}
+                            />
+                        </div>
+                    </div> : listings &&
                     listings.length > 0 ? (
                         <>
                             <main>

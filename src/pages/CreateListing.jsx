@@ -11,6 +11,7 @@ import {
 import { addDoc, collection, serverTimestamp } from "firebase/firestore"
 import { v4 as uuidv4 } from "uuid"
 import { db } from "../firebase.config";
+import loader from "../img/loader.gif";
 
 const CreateListing = () => {
 
@@ -112,7 +113,6 @@ const CreateListing = () => {
             geoLocation.lng = data[0]?.lon ?? 0
             location = data[0].display_name
 
-            console.log(location, geoLocation)
         } else {
             geoLocation.lat = latitude
             geoLocation.lng = longitude;
@@ -130,14 +130,12 @@ const CreateListing = () => {
                 uploadTask.on('state_changed',
                     (snapshot) => {
                         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                        console.log('Upload is ' + progress + '% done');
+                        //progress
+                        //     (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                         switch (snapshot.state) {
                             case 'paused':
-                                console.log('Upload is paused');
                                 break;
                             case 'running':
-                                console.log('Upload is running');
                                 break;
                             default:
                                 break;
@@ -181,7 +179,6 @@ const CreateListing = () => {
         ).catch((err) => {
             setLoading(false)
             toast.error(err)
-            console.log(err)
         })
 
         const dataCopy = {
@@ -198,7 +195,6 @@ const CreateListing = () => {
 
         const docRef = await addDoc(collection(db, 'listings'), dataCopy)
 
-        console.log(location)
         setLoading(false)
         toast.success('Listing saved')
         navigate(`/category/${dataCopy.type}/${docRef.id}`)
@@ -229,7 +225,15 @@ const CreateListing = () => {
 
     if (loading) {
         return (
-            <h2 className={'heading-2'}>Loading...</h2>
+            <div className={'center'}>
+                <div className={'center-asset'}>
+                    <img
+                        src={loader}
+                        alt={'loader'}
+                        width={120}
+                    />
+                </div>
+            </div>
         )
     }
 

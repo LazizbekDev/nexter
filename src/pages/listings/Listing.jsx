@@ -16,6 +16,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import loader from "../../img/loader.gif";
 
 const Listing = () => {
     const [loading, setLoading] = useState(true);
@@ -33,7 +34,6 @@ const Listing = () => {
             const docSnap = await getDoc(docRef)
 
             if (docSnap.exists()) {
-                console.log(docSnap.data());
                 setListing(docSnap.data());
                 setLoading(false);
             }
@@ -74,7 +74,7 @@ const Listing = () => {
                 onClick={() => opened ? setOpened(false) : setOpened(true)}
             />
 
-            <main style={{padding: "0 7rem"}}>
+            <main style={{padding: "0 2rem"}}>
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     slidesPerView={1}
@@ -96,7 +96,15 @@ const Listing = () => {
                     ))}
                 </Swiper>
                 <div>
-                    {loading ? <h2 className={'heading-2'}>Loading...</h2> : (<>
+                    {loading ? <div className={'center'}>
+                        <div className={'center-asset'}>
+                            <img
+                                src={loader}
+                                alt={'loader'}
+                                width={120}
+                            />
+                        </div>
+                    </div> : (<>
                         <div className={'listingDetails'}>
                             <p className={'listingName heading-3'}>
                                 {listing.name} - ${listing.offer ?
@@ -123,7 +131,7 @@ const Listing = () => {
                             </ul>
                             <p className={'listingLocationTitle'}>Location</p>
 
-                            <div className={'leaflet-container'}>
+                            <div className={'leaflet-container'} style={{marginBottom: "2rem"}}>
                                 <MapContainer
                                     style={{height: '30rem', width: '100%'}}
                                     zoom={13}

@@ -1,15 +1,18 @@
 import {useEffect, useState} from 'react';
-import { collection, getDocs, query, where, orderBy, limit, startAfter } from "firebase/firestore";
+import { collection, getDocs, query, where, orderBy, limit, startAfter, deleteDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import{ db} from "../firebase.config";
 import Sidebar from "../components/sidebar/Sidebar";
 import ListingItem from "./listings/ListingItem";
+import {useNavigate} from "react-router-dom";
+import loader from "../img/loader.gif"
 
 const Offer = () => {
     const [listings, setListings] = useState(null);
     const [loading, setLoading] = useState(true);
     const [lastFetched, setLastFetched] = useState(null)
     const [opened, setOpened] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchListings = async () => {
@@ -45,6 +48,17 @@ const Offer = () => {
         fetchListings();
     }, [])
 
+    const onDelete = async (id) => {
+        if (window.confirm('Are u sure to delete')) {
+            await deleteDoc(doc(db, 'listings', id))
+
+            const updatedListings = listings.filter(listing => {
+                return listing.id !== id
+            });
+
+            setListings(updatedListings)
+        }
+    }
     const loadMore = async () => {
         try {
             const listingsRef = collection(db, 'listings');
@@ -99,7 +113,15 @@ const Offer = () => {
                 </div>
 
                 <div>
-                    {loading ? <h2 className={'heading-2'}>Loading...</h2> : listings &&
+                    {loading ? <div className={'center'}>
+                        <div className={'center-asset'}>
+                            <img
+                                src={loader}
+                                alt={'loader'}
+                                width={120}
+                            />
+                        </div>
+                    </div> : listings &&
                     listings.length > 0 ? (
                         <>
                             <main>
@@ -109,7 +131,8 @@ const Offer = () => {
                                             listing={listing.data}
                                             id={listing.id}
                                             key={listing.id}
-                                            onDelete={() => console.log('deleted')}
+                                            onDelete={() => onDelete(listing.id)}
+                                            onEdit={() => navigate(`/edit-listing/${listing.id}`)}
                                         />
                                     ))}
                                 </ul>
@@ -125,7 +148,11 @@ const Offer = () => {
                             )}
                         </>
                     ) : (
-                        <h2 className={'heading-2'}>No Offers found</h2>
+                        <div className={'center'}>
+                            <div className={'center-asset'}>
+                                <h2 className={'heading-2'}>No Offers found</h2>
+                            </div>
+                        </div>
                     )}
                 </div>
             </div>

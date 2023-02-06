@@ -94,7 +94,6 @@ export const SignUp = () => {
             navigate('/');
         } catch (err) {
             toast.error('Something went wrong with registration')
-            console.log(err)
         }
 
     }
