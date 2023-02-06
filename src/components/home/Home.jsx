@@ -38,7 +38,6 @@ const HomeComponent = () => {
                 })
 
                 setListings(listings);
-                console.log(listings)
                 setLoading(false)
             } catch (err) {
                 toast.error('Could not fetch listings')

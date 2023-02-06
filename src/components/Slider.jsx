@@ -11,6 +11,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import loader from "../img/loader.gif";
 
 const Slider = () => {
 
@@ -42,7 +43,17 @@ const Slider = () => {
     }, [])
 
     if (loading) {
-        return "Loading..."
+        return (
+            <div className={'center'}>
+                <div className={'center-asset'}>
+                    <img
+                        src={loader}
+                        alt={'loader'}
+                        width={120}
+                    />
+                </div>
+            </div>
+        )
     }
     return listings && (
         <>
